@@ -39,5 +39,11 @@ public class SnackBar {
         bob.buySnacks(pretzel, 3);
         System.out.println(bob);
         System.out.println(pretzel);
+
+        chips.displayInfo();
+        chocolateBar.displayInfo();
+        pretzel.displayInfo();
+        soda.displayInfo();
+        water.displayInfo();
     }
 }
