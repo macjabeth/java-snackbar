@@ -1,7 +1,10 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Snack {
     private static final AtomicInteger maxId = new AtomicInteger(0);
+    private static final NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
     private final int id;
     private String name;
     private int quantity;
@@ -61,6 +64,13 @@ public class Snack {
 
     public double getTotalCost(int quantity) {
         return cost * quantity;
+    }
+
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Vending Machine: " + vendingMachineId);
+        System.out.println("Quantity on hand: " + quantity);
+        System.out.println("Total quantity cost on hand: " + formatter.format(quantity * cost));
     }
 
     @Override

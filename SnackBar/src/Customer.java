@@ -1,7 +1,10 @@
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Customer {
     private static final AtomicInteger maxId = new AtomicInteger(0);
+    private static final NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.US);
     private final int id;
     private String name;
     private double cash;
@@ -25,7 +28,7 @@ public class Customer {
 
     public Customer addCash(double amount) {
         cash += amount;
-        System.out.println(String.format("%s found $%.2f lying around.", name, amount));
+        System.out.println(String.format("%s found %s lying around.", name, formatter.format(amount)));
         return this;
     }
 
@@ -36,12 +39,12 @@ public class Customer {
     public Customer buySnacks(Snack snack, int quantity) {
         double totalCost = snack.getTotalCost(quantity);
         if (totalCost <= cash && snack.buy(quantity)) cash -= totalCost;
-        System.out.println(String.format("%s bought %d %s for $%.2f.", name, quantity, snack.getName(), totalCost));
+        System.out.println(String.format("%s bought %d %s for %s.", name, quantity, snack.getName(), formatter.format(totalCost)));
         return this;
     }
 
     @Override
     public String toString() {
-        return String.format("Customer %d (%s) has $%.2f cash on hand.", id, name, cash);
+        return String.format("Customer %d (%s) has %s cash on hand.", id, name, formatter.format(cash));
     }
 }
