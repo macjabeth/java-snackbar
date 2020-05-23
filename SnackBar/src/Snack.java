@@ -68,7 +68,7 @@ public class Snack {
 
     public void displayInfo() {
         System.out.println("Name: " + name);
-        System.out.println("Vending Machine: " + vendingMachineId);
+        System.out.println("Vending Machine: " + VendingMachine.instances.get(vendingMachineId).getName());
         System.out.println("Quantity on hand: " + quantity);
         System.out.println("Total quantity cost on hand: " + formatter.format(quantity * cost));
     }

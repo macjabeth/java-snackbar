@@ -5,7 +5,6 @@ public class SnackBar {
 
         VendingMachine food = new VendingMachine().setName("Food");
         VendingMachine drink = new VendingMachine().setName("Drink");
-        VendingMachine office = new VendingMachine().setName("Office");
 
         Snack chips = new Snack().setName("Chips").addQuantity(36).setCost(1.75).setVendingMachineId(food.getId());
         Snack chocolateBar = new Snack().setName("Chocolate Bar").addQuantity(36).setCost(1.00).setVendingMachineId(food.getId());
